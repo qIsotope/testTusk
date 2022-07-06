@@ -12,9 +12,11 @@ export const UserCard = ({ user }) => {
 			</div>
 			<div className={styles.card__itemName}>
 				<p className={styles.card__paragraph}>{user.position}</p>
-				<p className={styles.card__paragraph}>{user.email}</p>
+				<p className={styles.card__paragraph}>
+					<a style={{ color: 'inherit' }} href={`mailto:${user.email}`}>{user.email}</a>
+				</p>
 				<p className={styles.card__paragraph}>{user.phone}</p>
 			</div>
-		</div>	
+		</div>
 	)
 }
