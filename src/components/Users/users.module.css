@@ -1,0 +1,11 @@
+.users {
+	background-color: #F8F8F8;
+	margin-bottom: 140px;
+}
+
+.users__button {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+}
+

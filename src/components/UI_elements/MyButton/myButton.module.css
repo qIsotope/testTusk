@@ -1,0 +1,52 @@
+.myButton {
+	padding: 4px 30px;
+	background: #F4E041;
+	border-radius: 80px;
+	line-height: 26px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.87);
+	transition: all 0.1s ease-in-out;
+	font-size: 16px;
+	position: relative;
+}
+
+.myButton__load {
+	padding: 4px 44px 4px 30px;
+	background: #F4E041;
+	border-radius: 80px;
+	line-height: 26px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.87);
+	transition: all 0.1s ease-in-out;
+	font-size: 16px;
+	position: relative;
+}
+
+.myButton:hover {
+	background: #FFE302;
+}
+
+.myButton:disabled {
+	background: #B4B4B4;
+	cursor: not-allowed;
+}
+
+.myButton__load:disabled {
+	background: #B4B4B4;
+	cursor: not-allowed;
+}
+
+.myButton__fetching {
+	position: absolute;
+	height: 34px;
+	margin-left: 5px;
+	right: 6px;
+}
+
+.myButton__fetching img {
+	height: 100%;
+}

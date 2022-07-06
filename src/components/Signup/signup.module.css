@@ -1,0 +1,35 @@
+.signup {
+	margin-bottom: 100px;
+	position: relative;
+}
+
+.signup__form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 50px;
+	max-width: 380px;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+	padding: 0px 0px;
+}
+
+.signup__upload {
+	border: 1px solid rgba(0, 0, 0, 0.87) !important;
+	border-radius: 4px 0px 0px 4px !important;
+	font-size: 16px !important;
+	color: rgba(0, 0, 0, 0.87) !important;
+	height: 53px !important;
+	text-transform: none !important;
+}
+
+.signup__uploadError {
+	border-radius: 4px 0px 0px 4px !important;
+	font-size: 16px !important;
+	color: rgba(0, 0, 0, 0.87) !important;
+	height: 53px !important;
+	text-transform: none !important;
+	border: 2px solid #CB3D40 !important;
+	border-right: none !important;
+}

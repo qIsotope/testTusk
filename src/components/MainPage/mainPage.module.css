@@ -1,0 +1,40 @@
+.main__page {
+	width: 100%;
+	height: 100vh;
+	background-image: url(../../../public/assets/1\ copy\ 3.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	margin-bottom: 140px;
+}
+
+.main__pageBlock {
+	max-width: 380px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+
+}
+
+.main__pageSubtitle {
+	line-height: 26px;
+	text-align: center;
+	color: #FFFFFF;
+	margin-bottom: 36px;
+}
+
+.main__pageButton {
+	display: flex;
+	justify-content: center;
+}
+
+@media (max-width: 768px) {
+	.main__pageBlock {
+		width: 100%;
+		max-width: 100%;
+		padding: 0 15px;
+	}
+}

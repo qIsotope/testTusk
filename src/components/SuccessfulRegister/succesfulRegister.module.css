@@ -1,0 +1,21 @@
+.success {
+	margin-bottom: 100px;
+}
+
+.success__image {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+}
+
+.success__image img {
+	max-width: 328px;
+	max-height: 290px;
+}
+
+.success__wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 60px;
+}

@@ -1,0 +1,22 @@
+.header {
+	padding: 13px 0px;
+	position: absolute;
+	position: absolute;
+	left: 0%;
+	right: 0%;
+	top: 0%;
+	background-color: #fff;
+	z-index: 1;
+}
+
+.header__content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header__navigation {
+	margin-right: -25px;
+	display: flex;
+	gap: 3px;
+}

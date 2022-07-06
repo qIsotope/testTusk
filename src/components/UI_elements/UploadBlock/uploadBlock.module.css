@@ -1,0 +1,30 @@
+.signup__upload {
+	border: 1px solid rgba(0, 0, 0, 0.87) !important;
+	border-radius: 4px 0px 0px 4px !important;
+	font-size: 16px !important;
+	color: rgba(0, 0, 0, 0.87) !important;
+	height: 53px !important;
+	text-transform: none !important;
+}
+
+.signup__uploadError {
+	border-radius: 4px 0px 0px 4px !important;
+	font-size: 16px !important;
+	color: rgba(0, 0, 0, 0.87) !important;
+	height: 53px !important;
+	text-transform: none !important;
+	border: 2px solid #CB3D40 !important;
+	border-right: none !important;
+}
+
+.signup__input {
+	height: 54px;
+	width: 100%;
+	margin-left: 0 !important;
+	font-size: 16px !important;
+	background: #F8F8F8 !important;
+}
+
+.upload__wrapper {
+	display: flex;
+}
