@@ -11,7 +11,6 @@ import { CssTextField } from '../../utils/createCustomTextFields';
 import { MyRadio } from '../UI_elements/MyRadio/MyRadio';
 import { UploadBlock } from '../UI_elements/UploadBlock/UploadBlock';
 import { TitleOfSection } from '../TitleOfSection/TitleOfSection';
-import { usePostUser } from '../../hooks/usePostUser';
 
 
 
@@ -36,7 +35,6 @@ export const Signup = ({ setUsersValue, execute, signUpRef, setSuccess, setDisab
 		if (postingResponse?.data?.success === true) {
 			setSuccess(true)
 			setDisable(false)
-
 		}
 	}, [postingResponse])
 
