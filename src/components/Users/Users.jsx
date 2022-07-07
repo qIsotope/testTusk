@@ -3,15 +3,14 @@ import styles from './users.module.css'
 import { UserList } from '../UserList/UserList'
 import { MyButton } from '../UI_elements/MyButton/MyButton'
 import { userService } from '../../services/users/users.service'
-import { useGetUsersForPage } from '../../hooks/getUsersForPage'
+import { useAsync } from '../../hooks/useAsync'
 import { TitleOfSection } from '../TitleOfSection/TitleOfSection'
 import { ListOfSkeletons } from '../ListOfSkeletons/ListOfSkeletons'
 
-export const Users = ({ status, value, error, setValue, usersRef }) => {
+export const Users = ({ status, value, error, setValue, usersRef, setDisable, disable }) => {
 	const [page, setPage] = useState(2)
-	const [disable, setDisable] = useState(false)
-	const { executeForPage, statusForPage, valueForPage, errorForPage } = useGetUsersForPage(userService.getForPage, page, false)
-
+	
+	const [valueForPage, statusForPage, errorForPage, executeForPage] = useAsync(userService.getForPage, false, undefined)
 	useEffect(() => {
 		if (value && valueForPage) {
 			setValue([...value, ...valueForPage?.data?.users])
@@ -22,7 +21,7 @@ export const Users = ({ status, value, error, setValue, usersRef }) => {
 			setDisable(true)
 		}
 	}, [page])
-
+	console.log(errorForPage)
 	return (
 		<section ref={usersRef} className={styles.users}>
 			<div className="container">

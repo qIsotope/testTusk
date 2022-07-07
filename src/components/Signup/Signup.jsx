@@ -11,16 +11,15 @@ import { CssTextField } from '../../utils/createCustomTextFields';
 import { MyRadio } from '../UI_elements/MyRadio/MyRadio';
 import { UploadBlock } from '../UI_elements/UploadBlock/UploadBlock';
 import { TitleOfSection } from '../TitleOfSection/TitleOfSection';
-import { useToken } from '../../hooks/useToken';
 import { usePostUser } from '../../hooks/usePostUser';
 
 
 
-export const Signup = ({ setUsersValue, execute, signUpRef, setSuccess }) => {
+export const Signup = ({ setUsersValue, execute, signUpRef, setSuccess, setDisable }) => {
 
-	const { fetchValue, error, } = useAsync(userService.getPositions)
-	const { token, tokenError, setTokenError } = useToken(userService.getToken)
-	const { postingExecute, postingStatus, postingError, postingResponse, setPostingError } = usePostUser(userService.postUser)
+	const [positions, , positionsError,] = useAsync(userService.getPositions)
+	const [token, , tokenError, , , setTokenError] = useAsync(userService.getToken)
+	const [postingResponse, postingStatus, postingError, postingExecute, setPostingError] = useAsync(userService.postUser, false)
 	const [file, setFile] = useState(null)
 	const [radioValue, setRadioValue] = useState('1')
 	const { register, handleSubmit, formState: { errors, isValid }, setValue, reset, watch, clearErrors } = useForm({ mode: 'onChange', });
@@ -29,16 +28,15 @@ export const Signup = ({ setUsersValue, execute, signUpRef, setSuccess }) => {
 		const postObject = createObj(file, data, radioValue)
 		resetForm(reset, setFile)
 		await postingExecute(postObject, token)
-		const responseOfFirstUsers = execute()
-		if (postingResponse?.data?.success === true) {
-			setSuccess(true)
-		}
 		clearErrors(['name', 'phone', 'email', 'file'])
+		const responseOfFirstUsers = execute()
 		setUsersValue(responseOfFirstUsers?.data?.users)
 	}
 	useEffect(() => {
 		if (postingResponse?.data?.success === true) {
 			setSuccess(true)
+			setDisable(false)
+
 		}
 	}, [postingResponse])
 
@@ -78,11 +76,11 @@ export const Signup = ({ setUsersValue, execute, signUpRef, setSuccess }) => {
 							},
 						})} className={styles.signup__input}
 						label="Phone" variant="outlined" type="number" pattern="[+]{1}[0-9]{11,14}" />
-					{error
-						? <div className='error-message'>Service temporarily unavailable. <br /> Position error Message:{error.message}</div>
-						: <MyRadio radioValue={radioValue} setRadioValue={setRadioValue} fetchValue={fetchValue} />}
+					{positionsError
+						? <div className='error-message'>Service temporarily unavailable. <br /> Position error Message:{positionsError.message}</div>
+						: <MyRadio radioValue={radioValue} setRadioValue={setRadioValue} fetchValue={positions} />}
 					<UploadBlock errors={errors} setFile={setFile} register={register} />
-					<MyButton status={postingStatus} disabled={!isValid || tokenError || error || postingError || postingStatus === 'pending'}
+					<MyButton status={postingStatus} disabled={!isValid || tokenError || positionsError || postingError || postingStatus === 'pending'}
 						style={{ alignSelf: 'center' }}>Sign up</MyButton>
 					{tokenError && <div className='error-message'>Service temporarily unavailable. <br /> Token error Message: {tokenError.message}</div>}
 					{postingError && <div className='error-message'>{postingError.response.data.message}</div>}

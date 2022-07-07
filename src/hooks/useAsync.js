@@ -1,14 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 
-export const useAsync = (asyncFunction, immediate = true, callback) => {
+export const useAsync = (asyncFunction, immediate = true, callback,) => {
 	const [status, setStatus] = useState("idle");
 	const [fetchValue, setFetchValue] = useState(null);
 	const [error, setError] = useState(null);
-	const execute = useCallback(() => {
+	const execute = useCallback((independecy, secondIndependecy) => {
 		setStatus("pending");
 		setFetchValue(null);
 		setError(null);
-		return asyncFunction()
+		return asyncFunction(independecy, secondIndependecy)
 			.then((response) => {
 				setFetchValue(response);
 				setStatus("success");
@@ -27,5 +27,6 @@ export const useAsync = (asyncFunction, immediate = true, callback) => {
 			execute();
 		}
 	}, [execute, immediate]);
-	return { execute, status, fetchValue, error, setFetchValue };
+
+	return [fetchValue, status, error, execute, setFetchValue, setError];
 };
